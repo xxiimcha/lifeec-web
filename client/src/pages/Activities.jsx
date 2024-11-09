@@ -35,19 +35,19 @@ const Activities = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch('http://localhost:3000/api/v1/patient/list');
+      const response = await fetch(`${process.env.VITE_API_URL}/patient/list`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+  
       const data = await response.json();
       console.log('Fetched residents data:', data);
-
+  
       if (!Array.isArray(data)) {
         throw new Error('Residents data is not an array');
       }
-
+  
       setResidents(data);
     } catch (error) {
       console.error('Error fetching residents:', error);

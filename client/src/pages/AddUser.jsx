@@ -181,7 +181,6 @@ function AddUser() {
                 >
                   <MenuItem value="Nurse">Nurse</MenuItem>
                   <MenuItem value="Nutritionist">Nutritionist</MenuItem>
-                  <MenuItem value="Relative">Relative</MenuItem>
                 </Select>
               </FormControl>
             </Box>

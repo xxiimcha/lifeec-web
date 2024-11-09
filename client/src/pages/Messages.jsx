@@ -41,7 +41,7 @@ const Messages = () => {
     useEffect(() => {
         const fetchContacts = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/v1/user/users");
+                const response = await fetch(`${process.env.VITE_API_URL}/user/users`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch contacts.");
                 }
@@ -176,7 +176,7 @@ const Messages = () => {
                     >
                         <option value="">All User Types</option>
                         <option value="Nurse">Nurse</option>
-                        <option value="Relative">Relative</option>
+                        <option value="Family Member">Family Member</option>
                         <option value="Nutritionist">Nutritionist</option>
                     </select>
                     <ul className="contact-list">

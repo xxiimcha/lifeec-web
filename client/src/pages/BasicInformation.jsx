@@ -39,13 +39,14 @@ function BasicInformation() {
     };
   
     try {
-      const response = await fetch("http://localhost:3000/api/v1/patient/add", {
+      const response = await fetch(`http://localhost:3000/api/v1/patient/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
+      
   
       if (!response.ok) {
         const errorText = await response.text();
