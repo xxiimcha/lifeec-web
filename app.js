@@ -15,6 +15,7 @@ const mealRouter = require("./routes/meal");
 const userRouter = require("./routes/user");
 const messageRouter = require("./routes/message");
 const authRoute = require("./routes/auth");
+const emergencyAlertRoutes = require("./routes/emergencyAlert");
 
 const User = require("./models/User"); // Import User model
 const bcrypt = require("bcryptjs");
@@ -40,6 +41,7 @@ app.use("/api/v1/meal", mealRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/messages", messageRouter);
 app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/emergency-alerts", emergencyAlertRoutes);
 
 const port = process.env.PORT || 3000;
 
