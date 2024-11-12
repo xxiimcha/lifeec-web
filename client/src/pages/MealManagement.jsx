@@ -43,7 +43,7 @@ const MealManagement = () => {
   useEffect(() => {
     const fetchResidents = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/v1/patient/list');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/patient/list`);
         const data = await response.json();
         setResidents(data);
       } catch (error) {
@@ -86,7 +86,7 @@ const MealManagement = () => {
     console.log("Sending meal data:", JSON.stringify(mealData, null, 2));
   
     try {
-      const response = await fetch('http://localhost:3000/api/v1/meal/add', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/meal/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

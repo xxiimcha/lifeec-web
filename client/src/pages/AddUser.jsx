@@ -34,7 +34,7 @@ function AddUser() {
     setLoading(true);
     setHasError(false);
     try {
-      const response = await fetch("http://localhost:3000/api/v1/user/users");
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/user/users`);
       if (!response.ok) {
         throw new Error("Failed to fetch users.");
       }
@@ -54,7 +54,7 @@ function AddUser() {
     const formData = { name, email, password, userType };
 
     try {
-      const response = await fetch("http://localhost:3000/api/v1/user/add-user", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/user/add-user`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -104,7 +104,7 @@ function AddUser() {
   const handleDelete = async (userId) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        const response = await fetch(`http://localhost:3000/api/v1/user/delete/${userId}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/user/delete/${userId}`, {
           method: "DELETE",
         });
         if (!response.ok) {

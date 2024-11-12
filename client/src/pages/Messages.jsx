@@ -41,7 +41,7 @@ const Messages = () => {
     useEffect(() => {
         const fetchContacts = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/v1/user/users");
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/user/users`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch contacts.");
                 }
@@ -109,7 +109,7 @@ const Messages = () => {
     const sendMessageToServer = async (message) => {
         console.log("Sending message to server:", message);
         try {
-            const response = await fetch("http://localhost:3000/api/v1/messages/send", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/messages/send`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

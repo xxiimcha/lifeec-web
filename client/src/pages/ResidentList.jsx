@@ -209,8 +209,40 @@ const ResidentList = () => {
     window.print();
   };
 
+  // Add a function to send an emergency alert
+  const sendEmergencyAlert = async () => {
+    if (!selectedResident) {
+      alert("Please select a resident to send an emergency alert.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/api/v1/emergency-alerts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          residentId: selectedResident._id,
+          message: "Emergency alert triggered", // Customize this message as needed
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send emergency alert");
+      }
+
+      const result = await response.json();
+      console.log("Emergency alert sent:", result);
+      alert("Emergency alert has been triggered and saved in the database.");
+    } catch (error) {
+      console.error("Error sending emergency alert:", error);
+      alert("Failed to send emergency alert. Please try again.");
+    }
+  };
+
   const handleEmergencyAlert = () => {
-    alert("Emergency alert has been triggered!");
+    sendEmergencyAlert();
   };
 
   const filteredResidents = residents.filter((resident) =>

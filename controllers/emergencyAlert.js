@@ -3,12 +3,13 @@ const EmergencyAlert = require("../models/EmergencyAlert");
 exports.createEmergencyAlert = async (req, res) => {
   try {
     const { residentId, message, timestamp } = req.body;
+    console.log("Request to create alert received:", req.body);
 
     if (!residentId) {
+      console.log("Missing resident ID");
       return res.status(400).json({ message: "Resident ID is required" });
     }
 
-    // Create a new EmergencyAlert document
     const newAlert = new EmergencyAlert({
       residentId,
       message: message || "Emergency alert triggered",
@@ -16,6 +17,7 @@ exports.createEmergencyAlert = async (req, res) => {
     });
 
     await newAlert.save();
+    console.log("New alert created:", newAlert);
 
     res.status(201).json({
       message: "Emergency alert created successfully",
@@ -32,10 +34,13 @@ exports.createEmergencyAlert = async (req, res) => {
 
 exports.getEmergencyAlerts = async (req, res) => {
   try {
-    const alerts = await EmergencyAlert.find().populate("residentId"); // Optionally populate resident details
-    res.status(200).json({ data: alerts });
+    console.log("Request to fetch all emergency alerts received");
+    const alerts = await EmergencyAlert.find(); // Modify as needed to match your database structure
+    
+    console.log("Fetched alerts:", alerts);
+    res.status(200).json({ success: true, data: alerts });
   } catch (error) {
     console.error("Error fetching emergency alerts:", error);
-    res.status(500).json({ message: "Failed to fetch emergency alerts" });
+    res.status(500).json({ success: false, message: error.message });
   }
 };

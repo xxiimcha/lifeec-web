@@ -18,6 +18,7 @@ const authRoute = require("./routes/auth");
 const emergencyAlertRoutes = require("./routes/emergencyAlert");
 
 const User = require("./models/User"); // Import User model
+
 const bcrypt = require("bcryptjs");
 
 // Enable CORS to allow requests from the frontend

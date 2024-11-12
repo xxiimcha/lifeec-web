@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const emergencyAlertController = require("../controllers/emergencyAlert");
+const {createEmergencyAlert, getEmergencyAlerts} = require("../controllers/emergencyAlert");
 
-// Route to create a new emergency alert
-router.post("/", emergencyAlertController.createEmergencyAlert);
-
-// Route to get all emergency alerts
-router.get("/", emergencyAlertController.getEmergencyAlerts);
+// Verify that these functions exist in the `emergencyAlertController`
+router.post("/", createEmergencyAlert);
+router.get("/", getEmergencyAlerts);
 
 module.exports = router;

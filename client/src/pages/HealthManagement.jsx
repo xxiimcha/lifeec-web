@@ -139,7 +139,7 @@ const HealthManagement = () => {
 
       console.log("Submitting health progress data:", healthProgressData);
 
-      const response = await fetch("http://localhost:3000/api/v1/health-progress/add", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/health-progress/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
